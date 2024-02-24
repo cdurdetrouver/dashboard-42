@@ -5,7 +5,7 @@
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center flex flex-col items-center">
-		<h2 class="h2">Welcome to Marty Dashboard.</h2>
+		<h2 class="h2">Welcome to <span class="gradient-heading">Marty</span> Dashboard.</h2>
 		<!-- Animated Logo -->
 		<Avatar
 			src="https://cdn.discordapp.com/avatars/1208567625337151488/8a5b43b11d105e326a007074a7c5cff7.jpeg"
@@ -24,3 +24,13 @@
 		</div>
 	</div>
 </div>
+
+
+<style type="postcss">
+	.gradient-heading {
+		animation: gradient 3s ease infinite;
+		@apply bg-clip-text text-transparent box-decoration-clone;
+		@apply bg-gradient-to-br;
+		@apply from-primary-500 via-tertiary-500 to-secondary-500;
+	}
+</style>

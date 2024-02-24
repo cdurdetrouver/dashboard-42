@@ -1,29 +1,10 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
-
-	if (!$page.params.id) {
-		goto('/404');
-	}
+	import { SlideToggle } from '@skeletonlabs/skeleton';
+	let value: boolean = false;
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center flex flex-col items-center">
-		<h2 class="h2">Welcome to {$page.params.id}.</h2>
-		<div class="flex justify-center space-x-2">
-			<a
-				class="btn variant-filled"
-				href="https://skeleton.dev/"
-				target="_blank"
-				rel="noreferrer"
-			>
-				Launch Documentation
-			</a>
-		</div>
-		<div class="space-y-2">
-			<p>Try editing the following:</p>
-			<p><code class="code">/src/routes/+layout.svelte</code></p>
-			<p><code class="code">/src/routes/+page.svelte</code></p>
-		</div>
+		<SlideToggle name="slide" bind:checked={value} />
 	</div>
 </div>

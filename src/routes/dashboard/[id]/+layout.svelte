@@ -1,11 +1,6 @@
 <script lang="ts">
 	import { AppShell } from '@skeletonlabs/skeleton';
-    import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
-
-	if (!$page.params.id) {
-        goto('/404');
-    }
+	import { page } from '$app/stores';
 </script>
 
 <!-- App Shell -->
@@ -14,9 +9,15 @@
 	<svelte:fragment slot="sidebarLeft">
 		<!-- Insert the list: -->
 		<nav class="list-nav">
+			<p class="font-bold pl-4 text-2xl">Home</p>
 			<ul>
-				<li><a class={$page.route.id === "/dashboard/[id]" ? "bg-primary-active-token" : ""} href="/dashboard/{$page.params.id}">Home</a></li>
-				<li><a class={$page.route.id === "/dashboard/[id]/users" ? "bg-primary-active-token" : ""} href="/dashboard/{$page.params.id}/users">Users</a></li>
+				<li><a class={$page.route.id === "/dashboard/[id]" ? "bg-primary-active-token" : ""} href="/dashboard/{$page.params.id}">Settings</a></li>
+				<li><a class={$page.route.id === "/dashboard/[id]/start" ? "bg-primary-active-token" : ""} href="/dashboard/{$page.params.id}/start">Start</a></li>
+			</ul>
+			<p class="font-bold pl-4 text-2xl">Users</p>
+			<ul>
+				<li><a class={$page.route.id === "/dashboard/[id]/users" ? "bg-primary-active-token" : ""} href="/dashboard/{$page.params.id}/users">Add User</a></li>
+				<li><a class={$page.route.id === "/dashboard/[id]/users-list" ? "bg-primary-active-token" : ""} href="/dashboard/{$page.params.id}/users-list">List Users</a></li>
 			</ul>
 		</nav>
 		<!-- --- -->

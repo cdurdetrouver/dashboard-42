@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
-	// if ($page.status === 404) {
-	// 	goto('/404');
-	// }
-
+	onMount(() => {
+		if ($page.status === 404) {
+			goto('/404');
+		}
+	});
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
@@ -27,5 +29,7 @@
 				go back to safety
 			</a>
 		</div>
+
 	</div>
 </div>
+<pre>{JSON.stringify($page, null, 2)}</pre>

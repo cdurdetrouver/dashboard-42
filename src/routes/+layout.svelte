@@ -9,7 +9,7 @@
 		<!-- App Bar -->
 		<AppBar class="h-[5vh]">
 			<svelte:fragment slot="lead">
-				<a href="/"><strong class="text-xl uppercase">Marty</strong></a>
+				<a href="/"><span class="gradient-heading"><strong class="text-xl uppercase">Marty</strong></span></a>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
@@ -29,9 +29,8 @@
 					Github
 				</a>
 				<a
-					class="btn btn-sm variant-ghost-surface"
-					href="https://github.com/skeletonlabs/skeleton"
-					target="_blank"
+					class="btn btn-sm variant-soft-primary"
+					href="/login"
 					rel="noreferrer"
 				>
 					Login
@@ -42,3 +41,12 @@
 	<!-- Page Route Content -->
 	<slot />
 </AppShell>
+
+<style type="postcss">
+	.gradient-heading:hover {
+		animation: gradient 3s ease infinite;
+		@apply bg-clip-text text-transparent box-decoration-clone;
+		@apply bg-gradient-to-br;
+		@apply from-primary-500 via-tertiary-500 to-secondary-500;
+	}
+</style>
