@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { Stepper, Step } from '@skeletonlabs/skeleton';
 
-	let locked: boolean = false;
+	let locked: boolean = true;
 
 	function onCompleteHandler(e: Event): void { console.log('event:complete', e); }
 </script>
@@ -17,14 +17,15 @@
 					<p>Before doing anything, you need to invite the bot on your Server</p>
 					<aside class="place-holder alert variant-ghost-warning">
 						<div class="alert-message">
-							<p>This step is <u>{locked ? 'Locked' : 'Unlocked'}</u></p>
+							<p>This step is <u>{locked ? 'Locked' : 'Unlocked'}</u>{locked ? ' , You should invite it first' : ''}</p>
 						</div>
 						<div class="alert-actions">
 							<a
-								class="btn btn-sm variant-ghost-surface"
-								href="https://discord.gg/EXqV7W8MtY"
+								class="btn btn-sm variant-filled-primary"
+								href="https://discord.com"
 								target="_blank"
 								rel="noreferrer"
+								on:click={() => { locked = false; } }
 							>
 								Invite
 							</a>

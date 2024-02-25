@@ -17,8 +17,6 @@
 	];
 	const labels = flavorOptions.map((option) => option.label);
 
-	console.log(labels);
-
 	function onFlavorSelection(event: CustomEvent<AutocompleteOption<string>>): void {
 		inputDemo = event.detail.label;
 		console.log('onFlavorSelection', inputDemo);
@@ -40,6 +38,10 @@
 
 	function calert(): void {
 		console.log('calert');
+	}
+
+	function close(): void {
+		value = false;
 	}
 </script>
 
@@ -69,7 +71,7 @@
 				</div>
 				<div class="alert-actions">
 					<button class="btn variant-filled" on:click={calert}>Action</button>
-					<button class="btn-icon variant-filled"><i class="fa-solid fa-xmark" /></button>
+					<button class="btn-icon variant-filled" on:click={close}><i class="fa-solid fa-xmark" /></button>
 				</div>
 			</aside>
 		{/if}
