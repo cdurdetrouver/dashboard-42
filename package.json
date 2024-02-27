@@ -29,7 +29,7 @@
   },
   "type": "module",
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "axios": "^1.6.7",
     "mongodb": "^6.3.0"
   }
 }

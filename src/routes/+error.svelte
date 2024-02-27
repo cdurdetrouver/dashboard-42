@@ -1,13 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
-
-	onMount(() => {
-		if ($page.status === 404) {
-			goto('/404');
-		}
-	});
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">

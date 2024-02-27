@@ -4,7 +4,7 @@ export const load = async ({ params, fetch }) => {
   const { id } = params;
 
   const fetchResponse = async () => {
-    const res = await fetch(`/api/${id}/users`, {
+    const res = await fetch(`/api/${id}/params`, {
       headers: {
         Authorization: authmdp,
       },
@@ -15,10 +15,10 @@ export const load = async ({ params, fetch }) => {
 
     const data = await res?.json();
 
-    return data.users;
+    return data.guild;
   };
 
   return {
-    users: await fetchResponse(),
+    guild: await fetchResponse(),
   };
 };

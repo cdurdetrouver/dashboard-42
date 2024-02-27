@@ -1,24 +1,32 @@
 import { authmdp } from "$env/static/private";
+import { redirect } from "@sveltejs/kit";
 
 export const load = async ({ params, fetch }) => {
   const { id } = params;
 
   const fetchResponse = async () => {
-    const res = await fetch(`/api/${id}/users`, {
+    const res = await fetch(`/api/guilds`, {
       headers: {
         Authorization: authmdp,
       },
     }).catch((err) => {
       console.error(err);
-      return null;
+      return redirect(302, "/");
     });
 
     const data = await res?.json();
 
-    return data.users;
+    let check = false;
+    data.guilds.forEach((guild: any) => {
+      if (guild.guildid === id) {
+        check = true;
+      }
+    });
+
+    return check;
   };
 
   return {
-    users: await fetchResponse(),
+    inguild: await fetchResponse(),
   };
 };

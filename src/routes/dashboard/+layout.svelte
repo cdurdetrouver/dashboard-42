@@ -4,24 +4,23 @@
 
 	export let data;
 
-	const elems = data.data;
-
+	const elems = data.servers;
 </script>
 
 <!-- App Shell -->
-<AppShell slotSidebarLeft="bg-surface-500/5 w-[10rem] p-4 overflow-y-auto h-[95vh]">
+<AppShell slotSidebarLeft="bg-surface-500/5 w-[10rem] p-4 overflow-y-auto h-[95vh] border-r-4 border-gray-700">
 	<!-- Choose Server -->
 	<svelte:fragment slot="sidebarLeft">
 		<!-- list of server -->
-		<nav class="list-nav">
-			<ul>
+		<nav>
+			<ul class="flex flex-col items-center gap-5 w-full">
 				{#each elems as elem}
 					<li class="pb-2.5">
-						<a href="/dashboard/{elem.id}" class={$page.params.id === elem.id ? 'bg-primary-active-token' : ''}>
+						<a href="/dashboard/{elem.id}" class="hover:bg">
 							<Avatar
-								src="https://raw.githubusercontent.com/ayogun/42-project-badges/main/badges/{elem.image}e.png"
+								src="https://cdn.discordapp.com/icons/{elem.id}/{elem.icon}.png"
 								alt="server {elem.id}"
-								class="w-20 h-20 hover:rounded-3xl"
+								class="w-20 h-20 border-white {$page.params.id === elem.id ? 'rounded-3xl border-4' : 'hover:rounded-3xl hover:border-2 '}"
 							/>
 						</a>
 					</li>
