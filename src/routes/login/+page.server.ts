@@ -1,7 +1,19 @@
+import { API_ENDPOINT, CLIENT_ID, CLIENT_SECRET } from "$env/static/private";
+import { redirect } from "@sveltejs/kit";
 import axios from "axios";
 
 export async function load({ cookies, url }) {
   let code = url.searchParams.get("code");
+
+  let user = cookies.get("user");
+  let token = cookies.get("token");
+  if (user && token) {
+    return {
+      user: JSON.parse(user),
+      connexion: true,
+    };
+  }
+
   if (code) {
     let token = await getToken(code);
 
@@ -19,18 +31,15 @@ export async function load({ cookies, url }) {
         path: "/",
       });
 
-      return {
-        user: user.data,
-        connexion: true,
-      };
+      cookies.set("token", JSON.stringify(token), {
+        path: "/",
+      });
+
+      return redirect(302, "/login");
     }
   }
   return { connexion: false };
 }
-
-const API_ENDPOINT = "https://discord.com/api/v10";
-const CLIENT_ID = "1208567625337151488";
-const CLIENT_SECRET = "E6fH_4MG7D7zEu7STdFilrsItIB17MbC";
 
 async function getToken(code: string) {
   const data = new URLSearchParams({

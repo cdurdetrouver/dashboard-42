@@ -1,4 +1,4 @@
-import { authmdp } from "$env/static/private";
+import { API_ENDPOINT, authmdp } from "$env/static/private";
 
 export const GET = async ({ request, url, params }) => {
   const auth = request.headers.get("Authorization");
@@ -13,14 +13,11 @@ export const GET = async ({ request, url, params }) => {
 
   // console.log(`Bot ${access_token?.replaceAll('"', "")}`);
 
-  const guild = await fetch(
-    `https://discord.com/api/v10/guilds/${params.guildid}`,
-    {
-      headers: {
-        Authorization: `Bot ${access_token?.replaceAll('"', "")}`,
-      },
-    }
-  ).then((res) => res.json());
+  const guild = await fetch(`${API_ENDPOINT}/guilds/${params.guildid}`, {
+    headers: {
+      Authorization: `Bot ${access_token?.replaceAll('"', "")}`,
+    },
+  }).then((res) => res.json());
 
   // console.log(guild);
 

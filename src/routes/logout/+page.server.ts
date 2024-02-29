@@ -6,5 +6,10 @@ export async function load({ cookies }) {
     expires: new Date(0),
   });
 
+  cookies.set("user", "", {
+    path: "/",
+    expires: new Date(0),
+  });
+
   throw redirect(302, "/login");
 }

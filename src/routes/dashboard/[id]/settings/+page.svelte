@@ -3,7 +3,7 @@
 
 	export let data;
 
-	// console.log(data);
+	// console.log(data.channels);
 	let value: boolean = data.guild.check;
 	let value2: boolean = data.guild.check_failure;
 </script>

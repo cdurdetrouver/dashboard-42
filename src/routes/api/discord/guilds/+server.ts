@@ -1,4 +1,4 @@
-import { authmdp } from "$env/static/private";
+import { API_ENDPOINT, authmdp } from "$env/static/private";
 
 export const GET = async ({ request, url }) => {
   const auth = request.headers.get("Authorization");
@@ -13,7 +13,7 @@ export const GET = async ({ request, url }) => {
 
   // console.log(`Bearer ${access_token?.replaceAll('"', "")}`);
 
-  const guilds = await fetch(`https://discord.com/api/v10/users/@me/guilds`, {
+  const guilds = await fetch(`${API_ENDPOINT}/users/@me/guilds`, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

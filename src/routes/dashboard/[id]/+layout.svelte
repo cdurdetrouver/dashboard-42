@@ -1,10 +1,6 @@
 <script lang="ts">
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
-
-	// export let data;
-
-	// console.log(data);
 </script>
 
 <!-- App Shell -->

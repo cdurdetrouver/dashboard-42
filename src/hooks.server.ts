@@ -7,6 +7,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   if (event.url.pathname.startsWith("/dashboard")) {
     if (!token) return redirect(302, "/login");
   }
+  // console.log(event.params, event.url.pathname);
 
   if (token) {
     if (user) {
@@ -16,7 +17,6 @@ export const handle: Handle = async ({ event, resolve }) => {
         username: user2.username,
         avatar: user2.avatar,
       };
-      // console.log(event.locals.user);
     } else {
       event.cookies.set("token", "", {
         path: "/",
