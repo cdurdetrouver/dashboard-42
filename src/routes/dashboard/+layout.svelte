@@ -20,7 +20,8 @@
 							<Avatar
 								src="https://cdn.discordapp.com/icons/{elem.id}/{elem.icon}.png"
 								alt="server {elem.id}"
-								class="w-20 h-20 border-white {$page.params.id === elem.id ? 'rounded-3xl border-4' : 'hover:rounded-3xl hover:border-2 '}"
+								class="w-20 h-20 border-white {$page.params.id === elem.id ? 'border-4' : 'hover:rounded-3xl hover:border-2 '}"
+								rounded={$page.params.id === elem.id ? 'rounded-3xl' : 'rounded-full'}
 							/>
 						</a>
 					</li>
