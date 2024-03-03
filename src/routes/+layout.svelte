@@ -11,6 +11,9 @@
 		flip,
 		arrow,
 	} from "@floating-ui/dom";
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+	injectSpeedInsights();
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 	initializeStores();

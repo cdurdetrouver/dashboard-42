@@ -32,6 +32,7 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "^1.6.3",
+    "@vercel/speed-insights": "^1.0.10",
     "axios": "^1.6.7",
     "mongodb": "^6.3.0",
     "vercel": "^33.5.3"
