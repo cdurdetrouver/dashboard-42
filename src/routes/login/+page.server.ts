@@ -47,7 +47,7 @@ async function getToken(code: string) {
   const data = new URLSearchParams({
     grant_type: "authorization_code",
     code: code,
-    redirect_uri: "http://localhost:5173/login",
+    redirect_uri: "https://dashbord-bot.vercel.app/login",
   });
 
   const response = await axios
