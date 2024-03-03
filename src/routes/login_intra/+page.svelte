@@ -12,7 +12,7 @@
 			<div class="flex justify-center space-x-2">
 				<a
 					class="btn variant-filled"
-					href="https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-ec6fede3af09fc4668fad541b315d62858d4e25bec275ec0ab34ac69b58014e4&redirect_uri=https://dashbord-bot.vercel.app/login_intra&response_type=code"
+					href="https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-ec6fede3af09fc4668fad541b315d62858d4e25bec275ec0ab34ac69b58014e4&redirect_uri=https%3A%2F%2Fdashbord-bot.vercel.app%2Flogin_intra&response_type=code"
 					rel="noreferrer"
 				>
 					Login
