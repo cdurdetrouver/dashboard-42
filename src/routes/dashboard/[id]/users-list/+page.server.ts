@@ -1,4 +1,4 @@
-import { authmdp } from "$env/static/private";
+import { authmdp } from "$lib/env";
 
 export const load = async ({ params, fetch, parent }) => {
   const dataparent = await parent();

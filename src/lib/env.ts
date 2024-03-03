@@ -1,0 +1,10 @@
+export const mdbmdp = import.meta.env.VITE_mdbmdp;
+export const mdbuser = import.meta.env.VITE_mdbuser;
+export const authmdp = import.meta.env.VITE_authmdp;
+export const bottoken = import.meta.env.VITE_bottoken;
+export const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
+export const INTRA_ENDPOINT = import.meta.env.VITE_INTRA_ENDPOINT;
+export const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+export const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
+export const INTRA_ID = import.meta.env.VITE_INTRA_ID;
+export const INTRA_SECRET = import.meta.env.VITE_INTRA_SECRET;

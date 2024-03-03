@@ -12,7 +12,7 @@
 			<div class="flex justify-center space-x-2">
 				<a
 					class="btn variant-filled"
-					href="https://discord.com/oauth2/authorize?client_id=1208567625337151488&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Flogin&scope=identify+guilds.members.read+guilds"
+					href="https://discord.com/oauth2/authorize?client_id=1208567625337151488&response_type=code&redirect_uri=https://dashbord-bot.vercel.app/login&scope=identify+guilds.members.read+guilds"
 					rel="noreferrer"
 				>
 					Login

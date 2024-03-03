@@ -1,4 +1,4 @@
-import { authmdp } from "$env/static/private";
+import { authmdp } from "$lib/env";
 import { redirect } from "@sveltejs/kit";
 
 export const load = async ({ params, fetch }) => {

@@ -1,4 +1,4 @@
-import { API_ENDPOINT, CLIENT_ID, CLIENT_SECRET } from "$env/static/private";
+import { API_ENDPOINT, CLIENT_ID, CLIENT_SECRET } from "$lib/env";
 import { redirect } from "@sveltejs/kit";
 import axios from "axios";
 

@@ -1,4 +1,4 @@
-import { INTRA_ENDPOINT, INTRA_ID, INTRA_SECRET } from "$env/static/private";
+import { INTRA_ENDPOINT, INTRA_ID, INTRA_SECRET } from "$lib/env";
 import { redirect } from "@sveltejs/kit";
 import axios from "axios";
 

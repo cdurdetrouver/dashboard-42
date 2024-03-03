@@ -1,5 +1,5 @@
 import { clientdb } from "$lib/database";
-import { authmdp } from "$env/static/private";
+import { authmdp } from "$lib/env";
 
 export const GET = async ({ request }) => {
   const auth = request.headers.get("Authorization");

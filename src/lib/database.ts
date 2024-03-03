@@ -1,4 +1,4 @@
-import { mdbmdp, mdbuser } from "$env/static/private";
+import { mdbmdp, mdbuser } from "$lib/env";
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 const uri = `mongodb+srv://${mdbuser}:${mdbmdp}@bot-42.qxgaebq.mongodb.net/?retryWrites=true&w=majority`;

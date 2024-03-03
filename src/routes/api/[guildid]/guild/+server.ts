@@ -1,4 +1,4 @@
-import { API_ENDPOINT, authmdp } from "$env/static/private";
+import { API_ENDPOINT, authmdp } from "$lib/env";
 
 export const GET = async ({ request, url, params }) => {
   const auth = request.headers.get("Authorization");

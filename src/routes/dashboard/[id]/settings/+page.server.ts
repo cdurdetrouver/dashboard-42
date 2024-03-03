@@ -1,4 +1,4 @@
-import { authmdp, bottoken } from "$env/static/private";
+import { authmdp, bottoken } from "$lib/env";
 import { redirect } from "@sveltejs/kit";
 
 export const load = async ({ params, fetch }) => {
