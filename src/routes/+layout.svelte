@@ -1,11 +1,33 @@
 <script lang="ts">
+	import { onMount } from "svelte";
+	import { fade } from "svelte/transition";
 	import "../app.postcss";
-	import { AppShell, AppBar, Avatar } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Avatar, storePopup, initializeStores, Toast } from '@skeletonlabs/skeleton';
+	import {
+		computePosition,
+		autoUpdate,
+		offset,
+		shift,
+		flip,
+		arrow,
+	} from "@floating-ui/dom";
+
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+	initializeStores();
 
 	export let data;
 
 	let isHovering = false;
+	let showdiscord = data.user? true : false;
 	let menuTimeout:any;
+
+	onMount(() => {
+		if (data.user) {
+			setInterval(() => {
+				showdiscord = !showdiscord;
+			}, 15000);
+		}
+	});
 
 	function handleMouseOver() {
 		clearTimeout(menuTimeout);
@@ -50,7 +72,15 @@
 						href="/login"
 						rel="noreferrer"
 					>
-						Login
+						Login Discord
+					</a>
+				{:else if !data.userintra}
+					<a
+						class="btn btn-sm variant-soft-primary"
+						href="/login_intra"
+						rel="noreferrer"
+					>
+						Login Intra
 					</a>
 				{:else}
 					<div
@@ -62,11 +92,29 @@
 						tabindex="0"
 						role="button"
 					>
-						<Avatar
-							src={`https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}.png?size=1024`}
-							alt={data.user.username}
-							class="w-9 h-9"
-						/>
+						<div class="relative w-9 h-9">
+							{#if showdiscord}
+							<div
+							in:fade={{ duration: 500 }}
+							out:fade={{ duration: 500 }}>
+								<Avatar
+									src={`https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}.png?size=1024`}
+									alt={data.user.username}
+									class="absolute w-9 h-9"
+								/>
+							</div>
+							{:else}
+							<div
+							in:fade={{ duration: 500 }}
+							out:fade={{ duration: 500 }}>
+								<Avatar
+									src={data.userintra.avatar}
+									alt={data.userintra.username}
+									class="absolute w-9 h-9"
+								/>
+							</div>
+							{/if}
+						</div>
 						{#if isHovering}
 							<div class="flex flex-col gap-2 absolute z-10 top-14 right-0 bg-surface-500 p-2 rounded-md shadow-md">
 								<a
@@ -81,7 +129,14 @@
 									href="/logout"
 									rel="noreferrer"
 								>
-									Logout
+									Logout Discord
+								</a>
+								<a
+									class="btn btn-sm variant-soft-warning"
+									href="/logout_intra"
+									rel="noreferrer"
+								>
+									Logout Intra
 								</a>
 							</div>
 						{/if}
@@ -92,6 +147,7 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
+	<Toast />
 </AppShell>
 
 <style type="postcss">

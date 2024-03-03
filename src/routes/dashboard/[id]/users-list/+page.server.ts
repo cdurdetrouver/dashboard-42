@@ -1,6 +1,7 @@
 import { authmdp } from "$env/static/private";
 
-export const load = async ({ params, fetch }) => {
+export const load = async ({ params, fetch, parent }) => {
+  const dataparent = await parent();
   const { id } = params;
 
   const fetchResponse = async () => {
@@ -15,10 +16,31 @@ export const load = async ({ params, fetch }) => {
 
     const data = await res?.json();
 
-    return data.users;
+    // console.log(data.users);
+
+    let newusers: any[] = [];
+    data.users.forEach((user: any) => {
+      const objectWithId = dataparent.discordusers.find(
+        (item: any) => item.id === user.discord_id
+      );
+      newusers.push({
+        username: objectWithId?.username || "NONE",
+        id: user._id,
+        intra: user.intra,
+        projectname: user.projectname,
+      });
+    });
+
+    return newusers;
   };
 
   return {
     users: await fetchResponse(),
   };
+};
+
+export const actions = {
+  default: async ({ request, fetch, params }) => {
+    console.log("default");
+  },
 };

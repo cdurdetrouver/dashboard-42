@@ -8,6 +8,11 @@ declare namespace App {
       username: string;
       avatar: string;
     };
+    userintra: {
+      id: string;
+      username: string;
+      avatar: string;
+    };
   }
   // interface PageData {}
   // interface Error {}

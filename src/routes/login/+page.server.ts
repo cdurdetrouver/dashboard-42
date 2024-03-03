@@ -2,6 +2,8 @@ import { API_ENDPOINT, CLIENT_ID, CLIENT_SECRET } from "$env/static/private";
 import { redirect } from "@sveltejs/kit";
 import axios from "axios";
 
+export const prerender = false;
+
 export async function load({ cookies, url }) {
   let code = url.searchParams.get("code");
 

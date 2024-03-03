@@ -1,4 +1,4 @@
-import { API_ENDPOINT, authmdp } from "$env/static/private";
+import { API_ENDPOINT, authmdp, bottoken } from "$env/static/private";
 
 export const GET = async ({ request, url, params }) => {
   const auth = request.headers.get("Authorization");
@@ -10,28 +10,30 @@ export const GET = async ({ request, url, params }) => {
   }
 
   const access_token = url.searchParams.get("token");
-  const user = url.searchParams.get("search")?.replaceAll('"', "");
-
-  // console.log(`Bot ${access_token?.replaceAll('"', "")}`);
 
   const users = await fetch(
-    `${API_ENDPOINT}/guilds/${params.guildid}/members/search?query=${user}&limit=2`,
+    `${API_ENDPOINT}/guilds/${params.guildid}/members?limit=1000&after=0`,
     {
       headers: {
-        Authorization: `Bot ${access_token?.replaceAll('"', "")}`,
+        Authorization: `Bot ${bottoken}`,
       },
     }
   ).then((res) => res.json());
 
-  // console.log(guild);
-
-  if (users.message === "401: Unauthorized") {
+  if (users.message) {
     return new Response(JSON.stringify({ message: "Unauthorized" }), {
       status: 401,
     });
   }
 
-  return new Response(JSON.stringify({ users: users }), {
+  const newusers = users
+    .filter((item: any) => !item.user.bot)
+    .map((item: any) => ({
+      username: item.nick || item.user.global_name,
+      id: item.user.id,
+    }));
+
+  return new Response(JSON.stringify({ users: newusers }), {
     status: 200,
   });
 };

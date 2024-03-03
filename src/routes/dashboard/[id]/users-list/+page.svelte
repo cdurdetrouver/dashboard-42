@@ -2,8 +2,6 @@
 	import { type TableSource, tableMapperValues, Table } from '@skeletonlabs/skeleton';
 	export let data;
 
-	// console.log(data.guild);
-
 	const tableSimple: TableSource = {
 		head: ['Intra', 'Discord', 'Last Project'],
 		body: tableMapperValues(data.users, ['intra', 'username', 'projectname']),
