@@ -47,7 +47,7 @@ async function gettoken(code: string) {
     client_id: INTRA_ID,
     client_secret: INTRA_SECRET,
     code: code,
-    redirect_uri: "http://localhost:5173/login_intra",
+    redirect_uri: "https://dashbord-bot.vercel.app/login_intra",
   };
 
   let response = await axios
