@@ -27,7 +27,7 @@ export const POST = async ({ request, params }) => {
     { upsert: true }
   );
 
-  if (user.modifiedCount === 0 && user.upsertedId === null) {
+  if (user.modifiedCount !== 0 || user.upsertedId !== null) {
     return new Response(JSON.stringify({ message: "ERROR" }), {
       status: 500,
     });
